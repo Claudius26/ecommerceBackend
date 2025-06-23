@@ -1,36 +1,39 @@
 import mongoose from "mongoose";
-import addressSchema from "./addressSchema.js"; 
+import addressSchema from "./address.js";
 
-const userSchema = new mongoose.Schema({
-  firstname: {
-    type: String,
-    required: true
+const userSchema = new mongoose.Schema(
+  {
+    firstname: {
+      type: String,
+      required: true,
+    },
+    lastname: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 6,
+      maxlength: 30,
+    },
+    phone: {
+      type: String,
+      required: true,
+      match: [/^\+?[0-9]{11,15}$/, "Please enter a valid phone number"],
+    },
+    address: addressSchema,
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
-  lastname: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 6,
-    maxlength: 30
-  },
-  phone: {
-    type: String,
-    required: true,
-    match: [/^\+?[0-9]{11,15}$/, 'Please enter a valid phone number']
-  },
-  address: addressSchema,
-  isAdmin: {
-    type: Boolean,
-    default: false
-  }
-}, { timestamps: true });
+  { timestamps: true }
+);
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model("User", userSchema);

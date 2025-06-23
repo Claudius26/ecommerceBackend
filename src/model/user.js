@@ -1,48 +1,34 @@
+import mongoose from "mongoose";
 
-// @Entity
-// class User{
-//   name
-//   email
+const addressSchema = require('./addressSchema');
 
-//   constructor(){
-//     this.name = '';
-//     this.email = '';
-//     this.password = '';
-//     this.phone = '';
-//     this.address = '';
-//     this.role = '';
-//   }
+const userScheme = mongoose.Schema({
+  firstname: {type: String,
+    required: true,
+  },
+  lastname: {type: String,
+    required: true,
+    },
+  email: {type:String,
+    required: true,
+    unique: true
+  },
+  password: {type:String,
+    required: true,
+    minLength: 6,
+    maxLength: 30
+  },
+phone: {
+  type: String,
+  required: true,
+  match: [/^\+?[0-9]{11,15}$/, 'Please enter a valid phone number']
+},
+address: addressSchema,
 
-  
+isAdmin:{
+  type:Boolean,
+  default:false
+},
 
-//   setName(name){
-//     this.name = name;
-//   }
-//   getName(){
-//     return this.name;
-//   }
-//   setEmail(email){
-//     this.email = email;
-//   }
-//   getEmail(){
-//     return this.email;
-//   }
-//   setPassWord(password){
-//     this.password = password;
-//   }
-//   isValid(password){
-//     return this.password === password;
-//   }
-//   setAddress(address){
-//     this.address = address;
-//   }
-//   getAddress(){
-//     return this.address;
-//   }
-//   setRole(role){
-//     this.role = role;
-//   }
-//   getRole(){
-//     return this.role;
-//   }
-// }
+
+},{ timestamps: true })

@@ -18,7 +18,6 @@ describe("userRepo", () => {
   });
 test("userRepo can create user", () => {
  
-
 const userData = {
     firstname: "John",
     lastname: "Doe",

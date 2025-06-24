@@ -14,7 +14,6 @@ const cardSchema = new mongoose.Schema(
         /^(0[1-9]|1[0-2])\/([0-9]{2})$/,
         "Please enter a valid expiration date (MM/YY)",
       ],
-      
     },
     cvv: {
       type: String,

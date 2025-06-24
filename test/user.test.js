@@ -1,45 +1,45 @@
-import mongoose from "mongoose";
-import User from "../src/model/user.js";
-import request from "supertest";
-import dotenv from "dotenv";
-import app from "../server.js";
+import mongoose from "mongoose";import connectDB  from "../config/db.js";
+import User from "../model/user.js";
+import userRepo from "../data/repository/userRepo.js";
+import {describe, expect, test} from '@jest/globals';
 
-dotenv.config();
+describe("userRepo", () => {
+  beforeAll(async () => {
+    await connectDB(); 
+  });
 
-beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI);
-});
-afterAll(async () => {
-  await mongoose.connection.close();
-});
-afterEach(async () => {
-  await User.deleteMany();
-});
+  afterEach(async () => {
+    await User.deleteMany(); 
+  });
 
-describe("User Model Tests", () => {
-  it("should create a user successfully", async () => {
-   const res = await request(app)
-      .post("/api/users/register")
-      .send({
-        firstname: "John",
-        lastname: "Doe",
-        email: "john@gmail.com",
-        password: "password123",
-        phone: "+12345678901",
-        address: {
-          street: "123 Main St",
-          city: "Anytown",
-          state: "CA",
-          postalCode: "12345",
-          country: "USA"
-        },
-        isAdmin: false
-      });
-      expect(res.statusCode).toBe(201);
-      expect(res.body.user).toBeDefined();
+  afterAll(async () => {
+    await mongoose.connection.db.dropDatabase(); 
+    await mongoose.connection.close(); 
+  });
+test("userRepo can create user", () => {
+ 
 
-      const users = await User.find();
-      expect(users.length).toBe(1);
-  })
+const userData = {
+    firstname: "John",
+    lastname: "Doe",
+    email: "johnDoe@gmail.com",
+    password: "password123",
+    phone: "+12345678901",
+    address: {
+      street: "123 Main St",
+      city: "Anytown",
+      state: "CA",
+      postalCode: "12345",
+      country: "USA"
+    },
+    isAdmin: false
+  };
+
+const user = userRepo.createUser(userData);
+    expect(user).toBeDefined();
+    expect(user.firstname).toBe("John");
+    expect(user.lastname).toBe("Doe");
+    expect(user.email).toBe("johnDoe@gmail.com")
+
 })
-
+});

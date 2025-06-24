@@ -2,6 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "dev": "nodemon server.js",
@@ -10,7 +11,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "��#\u0000 \u0000e\u0000c\u0000o\u0000m\u0000m\u0000e\u0000r\u0000c\u0000e\u0000B\u0000a\u0000c\u0000k\u0000e\u0000n\u0000d\u0000\r\u0000 \u0000",
+  "description": "ecommerceBackend",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.5.0",
@@ -27,7 +28,6 @@
     "type": "git",
     "url": "git+https://github.com/Claudius26/ecommerceBackend.git"
   },
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Claudius26/ecommerceBackend/issues"
   },

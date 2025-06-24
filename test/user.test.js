@@ -35,8 +35,11 @@ describe("User Model Tests", () => {
         },
         isAdmin: false
       });
+      expect(res.statusCode).toBe(201);
+      expect(res.body.user).toBeDefined();
+
+      const users = await User.find();
+      expect(users.length).toBe(1);
   })
 })
 
-expect(res.statusCode).toBe(201);
-expect(res.body.user).toBeDefined();

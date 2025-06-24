@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import addressSchema from "./address.js"; 
 
 const cardSchema = new mongoose.Schema(
   {
@@ -25,11 +26,8 @@ const cardSchema = new mongoose.Schema(
       required: true,
     },
     billingAddress: {
-      street: { type: String, required: true },
-      city: { type: String, required: true },
-      state: { type: String, required: true },
-      zipCode: { type: String, required: true },
-      country: { type: String, required: true },
+      type: addressSchema,
+      required: true,
     },
     isDefault: {
       type: Boolean,

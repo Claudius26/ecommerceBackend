@@ -5,6 +5,7 @@ const CATEGORY = Object.freeze({
   BEAUTY: "Beauty",
   HEALTH: "Health",
   TOYS: "Toys",
+  GROCERIES: "Groceries",
 });
 
 export default CATEGORY;

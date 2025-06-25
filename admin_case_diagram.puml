@@ -1,0 +1,39 @@
+@startuml admin_case_diagram
+left to right direction
+
+actor Admin
+actor Seller
+actor Buyer
+
+rectangle "Admin System" {
+  Admin --> (Add Admin)
+  Admin --> (Delete Admin)
+  Admin --> (Add Seller)
+  Admin --> (Delete Seller)
+  Admin --> (Disable Seller)
+  Admin --> (Disable Buyer)
+  Admin --> (Delete Buyer)
+  Admin --> (Disable Product)
+  Admin --> (Delete Product)
+  Admin --> (Edit Product)
+  Admin --> (View Product)
+  Admin --> (View Orders)
+  Admin --> (View Reports)
+  Admin --> (View System Settings)
+
+
+}
+
+rectangle "Seller System" {
+  Seller --> (Add Product)
+  Seller --> (Edit Product)
+  Seller --> (Delete Product)
+  Seller --> (View Own Products)
+}
+
+rectangle "Buyer System" {
+  Buyer --> (Browse Products)
+  Buyer --> (Buy Product)
+  Buyer --> (View Orders)
+}
+@enduml

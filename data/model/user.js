@@ -3,11 +3,11 @@ import addressSchema from "./address.js";
 
 const userSchema = new mongoose.Schema(
   {
-    firstname: {
+    firstName: {
       type: String,
       required: true,
     },
-    lastname: {
+    lastName: {
       type: String,
       required: true,
     },

@@ -17,6 +17,27 @@ describe("userRepo", () => {
     await mongoose.connection.db.dropDatabase();
     await mongoose.connection.close();
   });
+
+test("userRepo can create user", () => {
+ 
+const userData = {
+    firstname: "John",
+    lastname: "Doe",
+    email: "johnDoe@gmail.com",
+    password: "password123",
+    phone: "+12345678901",
+    address: {
+      street: "123 Main St",
+      city: "Anytown",
+      state: "CA",
+      postalCode: "12345",
+      country: "USA"
+    },
+    isAdmin: false
+  };
+
+const user = userRepo.createUser(userData);
+
   test("userRepo can create user", async () => {
     const userData = {
       firstname: "John",

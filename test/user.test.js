@@ -17,7 +17,6 @@ describe("userRepo", () => {
     await mongoose.connection.db.dropDatabase();
     await mongoose.connection.close();
   });
-
   test("userRepo can create user", async () => {
     const userData = {
       firstname: "John",
@@ -36,7 +35,6 @@ describe("userRepo", () => {
     };
 
     const user = await userRepo.createUser(userData);
-
     expect(user).toBeDefined();
     expect(user.firstname).toBe("John");
     expect(user.lastname).toBe("Doe");

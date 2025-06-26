@@ -1,45 +1,19 @@
 import mongoose from "mongoose";
-import addressSchema from "./address.js";
+import User from "./user.js";
 import userRole from "./role.js";
 
-const customerSchema = new mongoose.Schema(
-  {
-    firstname: {
-      type: String,
-      required: true,
-    },
-    lastname: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      minlength: 6,
-      maxlength: 30,
-    },
-    phone: {
-      type: String,
-      required: true,
-      match: [/^\+?[0-9]{11,15}$/, "Please enter a valid phone number"],
-    },
-    address: addressSchema,
-    role: {
-      type: String,
-      enum: [userRole.CUSTOMER],
-      default: userRole.CUSTOMER,
-    },
-    cart: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Cart",
-    },
+const customerSchema = new mongoose.Schema({
+  cart: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Cart",
   },
-  { timestamps: true }
-);
+  role: {
+    type: String,
+    enum: [userRole.CUSTOMER],
+    default: userRole.CUSTOMER,
+  },
+});
 
-export default mongoose.model("User", customerSchema);
+const Customer = User.discriminator("Customer", customerSchema);
+
+export default Customer;

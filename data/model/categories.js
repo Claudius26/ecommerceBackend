@@ -1,11 +1,19 @@
-const CATEGORY = Object.freeze({
-  CLOTHING: "Clothing",
-  KITCHEN: "Kitchen",
-  JEWELRIES: "Jewelries",
-  BEAUTY: "Beauty",
-  HEALTH: "Health",
-  TOYS: "Toys",
-  GROCERIES: "Groceries",
-});
+import mongoose from "mongoose";
 
-export default CATEGORY;
+const categorySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  adminId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Admin",
+    required: true,
+  },
+  creationDate: {
+    type: Date,
+    default: Date.now,
+  },
+});
+export default mongoose.model("Category", categorySchema);

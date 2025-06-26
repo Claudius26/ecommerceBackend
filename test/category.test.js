@@ -9,6 +9,8 @@ describe("categoryRepo", () => {
   });
 
   afterEach(async () => {
+    await Category.deleteMany();
+    await Admin.deleteMany();
     await mongoose.connection.db.dropDatabase();
   });
 

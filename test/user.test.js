@@ -17,6 +17,7 @@ describe("userRepo", () => {
     await mongoose.connection.db.dropDatabase();
     await mongoose.connection.close();
   });
+
   test("userRepo can create user", async () => {
     const userData = {
       firstname: "John",

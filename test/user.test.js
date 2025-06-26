@@ -6,7 +6,7 @@ import { describe, expect, test, beforeAll, afterEach, afterAll } from "vitest";
 
 describe("userRepo", () => {
   beforeAll(async () => {
-    await connectDB();
+    await connectDB(); 
   });
 
   afterEach(async () => {

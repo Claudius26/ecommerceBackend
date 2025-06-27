@@ -12,14 +12,6 @@ const sellerSchema = new mongoose.Schema({
     required: true,
     maxlength: 500,
   },
-  businessLicense: {
-    type: String,
-    required: true,
-    match: [
-      /^[A-Z0-9]{10,15}$/,
-      "Please enter a valid business license number",
-    ],
-  },
   role: {
     type: String,
     enum: [userRole.SELLER],

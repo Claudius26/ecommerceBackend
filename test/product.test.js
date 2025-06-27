@@ -6,6 +6,7 @@ import Category from "../data/model/category.js";
 import Admin from "../data/model/admin";
 import adminRepo from "../data/repository/adminRepo.js";
 import categoryRepo from "../data/repository/categoryRepo.js";
+import registerSeller from "../services/sellerService/registerSeller.js";
 import { describe, expect, test, beforeAll, afterEach, afterAll } from "vitest";
 
 describe("productRepo", () => {
@@ -28,10 +29,29 @@ describe("productRepo", () => {
       password: "password123",
       role: "Admin",
     });
+
     const category = await Category.create({
       name: "Clothing",
       adminId: admin._id,
     });
+
+    const seller = await registerSeller({
+      firstname: "John",
+      lastname: "Doe",
+      email: "seller1@gmail.com",
+      password: "password123",
+      phone: "+12345678901",
+      address: {
+        street: "123 Main St",
+        city: "Lagos",
+        state: "Lagos",
+        postalCode: "100001",
+        country: "Nigeria",
+      },
+      businessName: "Doe Fashion",
+      businessDescription: "Trendy clothes for everyone",
+    });
+
     const productData = {
       name: "Product 1",
       description: "Description 1",
@@ -39,16 +59,17 @@ describe("productRepo", () => {
       price: 100,
       quantity: 10,
       image: "http://example.com/image.jpg",
+      seller: seller._id,
     };
+
     const product = await productRepo.createProduct(productData);
     expect(product).toBeDefined();
     expect(product.name).toBe(productData.name);
     expect(product.description).toBe(productData.description);
-    expect(product.category.toString()).toBe(
-      productData.category._id.toString()
-    );
+    expect(product.category.toString()).toBe(productData.category.toString());
     expect(product.price).toBe(productData.price);
     expect(product.quantity).toBe(productData.quantity);
     expect(product.image).toBe(productData.image);
+    expect(product.seller.toString()).toBe(productData.seller.toString());
   });
 });

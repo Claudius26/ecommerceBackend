@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import CATEGORY from "./category";
+import CATEGORY from "./category.js";
 
 const productSchema = new mongoose.Schema(
   {
@@ -30,10 +30,13 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    seller: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-const Product = mongoose.model("Product", productSchema);
-
-export default Product;
+export default mongoose.model("Product", productSchema);

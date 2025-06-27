@@ -4,6 +4,8 @@ import User from "../data/model/user.js";
 import userRepo from "../data/repository/userRepo.js";
 import customerRepo from "../data/repository/customerRepo.js";
 import { describe, expect, test, beforeAll, afterEach, afterAll } from "vitest";
+import registerCustomer from "../services/customerService/registerCustomer.js";
+import Cart from "../data/model/cart.js";
 
 describe("userRepo", () => {
   beforeAll(async () => {
@@ -81,3 +83,4 @@ describe("customerRepo", () => {
     expect(customer.role).toBe("Customer");
   });
 });
+

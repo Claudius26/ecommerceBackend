@@ -5,6 +5,12 @@ class userRepo{
    return await User.create(userData);
     
   }
+  async findAllUsers() {
+    return await User.find({});
+  }
+  async deleteUser(id) {
+    return await User.findByIdAndDelete(id);
+  }
 
   async findById(id) {
    return await User.findById(id); 

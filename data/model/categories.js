@@ -1,20 +1,11 @@
-import mongoose from "mongoose";
-
-const categorySchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  adminId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Admin",
-    required: true,
-  },
-  creationDate: {
-    type: Date,
-    default: Date.now,
-  },
+const CATEGORY = Object.freeze({
+  CLOTHING: "Clothing",
+  KITCHEN: "Kitchen",
+  JEWELRIES: "Jewelries",
+  BEAUTY: "Beauty",
+  HEALTH: "Health",
+  TOYS: "Toys",
+  GROCERIES: "Groceries",
 });
-const Category = mongoose.model("Category", categorySchema);
+
 export default CATEGORY;

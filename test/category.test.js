@@ -20,7 +20,7 @@ describe("categoryRepo", () => {
 
   test("category repo can create category", async () => {
     const admin = await Admin.create({
-      email: "admin@gmail",
+      email: "admin1@gmail",
       password: "password123",
       role: "Admin",
     });

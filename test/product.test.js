@@ -24,7 +24,7 @@ describe("productRepo", () => {
 
   test("productRepo can create product", async () => {
     const admin = await Admin.create({
-      email: "admin@gmail",
+      email: "admin2@gmail",
       password: "password123",
       role: "Admin",
     });

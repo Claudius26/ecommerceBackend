@@ -19,7 +19,7 @@ describe("adminRepo", () => {
 
   test("adminRepo can create admin", async () => {
     const adminData = {
-      email: "admin1@gmail",
+      email: "admin@gmail",
       password: "password123",
       role: "Admin",
     };

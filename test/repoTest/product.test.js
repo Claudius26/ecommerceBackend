@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import connectDB from "../src/config/db.js";
-import Product from "../data/model/product.js";
-import productRepo from "../data/repository/productRepo.js";
-import Category from "../data/model/category.js";
-import Admin from "../data/model/admin";
-import adminRepo from "../data/repository/adminRepo.js";
-import categoryRepo from "../data/repository/categoryRepo.js";
+import connectDB from "../../src/config/db.js";
+import Product from "../../data/model/product.js";
+import productRepo from "../../data/repository/productRepo.js";
+import Category from "../../data/model/category.js";
+import Admin from "../../data/model/admin.js";
+import adminRepo from "../../data/repository/adminRepo.js";
+import categoryRepo from "../../data/repository/categoryRepo.js";
 import { describe, expect, test, beforeAll, afterEach, afterAll } from "vitest";
 
 describe("productRepo", () => {
@@ -15,6 +15,8 @@ describe("productRepo", () => {
 
   afterEach(async () => {
     await Product.deleteMany();
+    await Category.deleteMany();
+    await Admin.deleteMany();
   });
 
   afterAll(async () => {

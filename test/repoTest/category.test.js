@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import Category from "../data/model/category.js";
-import Admin from "../data/model/admin.js";
+import Category from "../../data/model/category.js";
+import Admin from "../../data/model/admin.js";
 import { describe, expect, test, beforeAll, afterEach, afterAll } from "vitest";
 
 describe("categoryRepo", () => {
@@ -11,10 +11,10 @@ describe("categoryRepo", () => {
   afterEach(async () => {
     await Category.deleteMany();
     await Admin.deleteMany();
-    await mongoose.connection.db.dropDatabase();
   });
 
   afterAll(async () => {
+    await mongoose.connection.db.dropDatabase();
     await mongoose.connection.close();
   });
 

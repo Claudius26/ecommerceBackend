@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import connectDB from "../src/config/db.js";
-import Admin from "../data/model/admin.js";
+import connectDB from "../../src/config/db.js";
+import Admin from "../../data/model/admin.js";
 import { describe, expect, test, beforeAll, afterEach, afterAll } from "vitest";
 
 describe("adminRepo", () => {

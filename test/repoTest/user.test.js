@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
-import connectDB from "../src/config/db.js";
-import User from "../data/model/user.js";
-import userRepo from "../data/repository/userRepo.js";
+import connectDB from "../../src/config/db.js";
+import User from "../../data/model/user.js";
+import userRepo from "../../data/repository/userRepo.js";
 import { describe, expect, test, beforeAll, afterEach, afterAll } from "vitest";
 
 describe("userRepo", () => {
   beforeAll(async () => {
-    await connectDB(); 
+    await connectDB();
   });
 
   afterEach(async () => {

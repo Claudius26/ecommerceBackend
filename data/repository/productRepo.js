@@ -1,6 +1,7 @@
 import Product from "../model/product";
 
 class ProductRepo {
+
   async createProduct(productData) {
     return await Product.create(productData);
   }
@@ -8,6 +9,11 @@ class ProductRepo {
   async findById(id) {
     return await Product.findById(id);
   }
+
+  async findBySeller(sellerId){
+  return await Product.find({ seller: sellerId });
+ }
+
 
   async findAll() {
     return await Product.find();

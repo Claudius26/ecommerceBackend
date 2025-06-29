@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import CATEGORY from "./category.js";
+import {ProductCategoryList} from "./category.js";
 
 const productSchema = new mongoose.Schema(
   {
@@ -11,9 +11,9 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "category",
+     category: {
+      type: String,
+      enum: ProductCategoryList,
       required: true,
     },
     price: {

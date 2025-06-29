@@ -1,21 +1,18 @@
-import mongoose from "mongoose";
-
-const categorySchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  adminId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Admin",
-    required: true,
-  },
-  creationDate: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-const Category = mongoose.model("Category", categorySchema);
-export default Category;
+const ProductCategory = {
+  ELECTRONICS: 'Electronics',
+  MEN_CLOTHING: 'Men Clothing',
+  WOMEN_CLOTHING: 'Women Clothing',
+  CHILDREN_CLOTHING: 'Children Clothing',
+  KITCHEN: 'Kitchen',
+  FURNITURE: 'Furniture',
+  WATCHES: 'Watches',
+  BEDDING: 'Bedding',
+  LIGHTING: 'Lighting',
+  GARDEN: 'Garden',
+  SKINCARE: 'Skincare',
+  GROCERIES: 'Groceries',
+  BOOKS: 'Books',
+  TOYS: 'Toys',
+  PET_FOOD: 'Pet Food'
+};
+export const ProductCategoryList = Object.values(ProductCategory);
